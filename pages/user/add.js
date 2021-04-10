@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Alert, Spinner } from "react-bootstrap";
 
 class Add extends Component {
 
@@ -10,6 +12,8 @@ class Add extends Component {
             userId: "",
             title: "",
             body: "",
+            dataPosted: false,
+            loading: false,
         }
     }
 
@@ -18,15 +22,17 @@ class Add extends Component {
     }
 
     handleSubmit = event => {
+        this.setState({ loading: true });
         event.preventDefault();
-        console.log("state =>",this.state);
         axios
         .post("https://jsonplaceholder.typicode.com/posts", this.state)
         .then(response => {
             console.log(response);
+            this.setState({ dataPosted: true, loading: false });
         })
         .catch(error => {
             console.log(error);
+            this.setState({ loading: false })
         })
     }
 
@@ -57,8 +63,20 @@ class Add extends Component {
                             name="body"
                             onChange={this.handleChange} />
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={this.state.loading}>Submit</button>
                 </form>
+                
+                { this.state.dataPosted ? (
+                    <Alert variant="success">
+                        Submitted!
+                    </Alert>
+                ) : null }
+
+                { this.state.loading ? (
+                    <Spinner animation="border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </Spinner> ) : null }
+                
             </div>
         )
     }

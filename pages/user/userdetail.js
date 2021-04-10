@@ -28,7 +28,7 @@ const userDetails = (props) => {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                     <TableRow>
-                        <TableCell></TableCell>
+                        <TableCell>Id</TableCell>
                         <TableCell align="right">name</TableCell>
                         <TableCell align="right">phone</TableCell>
                         <TableCell align="right">username</TableCell>
