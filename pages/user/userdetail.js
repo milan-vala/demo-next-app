@@ -15,9 +15,7 @@ const useStyles = makeStyles({
 });
 
 const userDetails = (props) => {
-    console.log(props)
     const { user } = props;
-    console.log(props)
     const classes = useStyles();
 
     return (

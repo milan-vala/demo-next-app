@@ -40,6 +40,9 @@ export default function Nav() {
                         <Link href="/user">
                             <a className="nav-item nav-link">Users</a>
                         </Link>
+                        <Link href="/user/login">
+                            <a className="nav-item nav-link">Login</a>
+                        </Link>
                     </div>
                 </div>
             </nav>
