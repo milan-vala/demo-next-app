@@ -5,9 +5,7 @@ import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
 
-  const [initialState, setInitialState] = useState(false);
-
-  
+  const [initialState, setInitialState] = useState(false);  
 
   const reducer = (state = initialState, action) => {
     

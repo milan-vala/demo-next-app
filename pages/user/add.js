@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Alert, Spinner } from "react-bootstrap";
+import { connect } from "react-redux";
 
 class Add extends Component {
 
     constructor(props) {
         super(props);
+        console.log("add data props => ",props);
 
         this.state = {
             userId: "",
@@ -82,4 +84,14 @@ class Add extends Component {
     }
 }
 
-export default Add;
+function mapStateToProps(state) {
+    return {
+        login: state.login,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Add);

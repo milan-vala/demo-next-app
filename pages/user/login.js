@@ -20,10 +20,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-    console.log("matdispatchToProps ====>")
     return {
         handleLogin: () => dispatch({ type: "USER_LOGIN" }),
     }
 }
 
-export default connect(mapStateToProps)(Login) ;
+export default connect(mapStateToProps, mapDispatchToProps)(Login) ;

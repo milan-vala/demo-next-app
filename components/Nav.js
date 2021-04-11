@@ -5,7 +5,6 @@ import Nprogress from "nprogress";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 Router.onRouteChangeStart = url => {
-    console.log(url);
     Nprogress.start();
 }
 
