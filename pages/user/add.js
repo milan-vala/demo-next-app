@@ -8,7 +8,7 @@ class Add extends Component {
 
     constructor(props) {
         super(props);
-        console.log("add data props => ",props);
+        console.log("add page data props => ",props);
 
         this.state = {
             userId: "",

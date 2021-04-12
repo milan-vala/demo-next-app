@@ -5,13 +5,15 @@ import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
 
-  const [initialState, setInitialState] = useState(false);  
+  const initialState = { login: false }
 
   const reducer = (state = initialState, action) => {
-    
+
     switch(action.type) {
+
       case "USER_LOGIN":
         return { login: true };
+
       case "USER_LOGOUT":
         return { login: false };
     }
