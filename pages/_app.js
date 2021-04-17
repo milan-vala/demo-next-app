@@ -1,34 +1,43 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import Layout from "../components/Layout";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
+import withRedux from "next-redux-wrapper";
+import store from "../redux/store";
 
-function MyApp({ Component, pageProps }) {
+// function MyApp({ Component, pageProps }) {
 
-  const initialState = { login: false }
+//   return (
+//     // <Provider store={store}>
+//       <Layout>
+//         <Component {...pageProps} />
+//       </Layout>
+//     // </Provider>
+//   )
+// }
 
-  const reducer = (state = initialState, action) => {
+// export default MyApp
 
-    switch(action.type) {
+class App extends Component {
+  
+  static async getInitialProps({Component, ctx}) {
+    const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
-      case "USER_LOGIN":
-        return { login: true };
-
-      case "USER_LOGOUT":
-        return { login: false };
-    }
-    return state;
+    //Anything returned here can be accessed by the client
+    return {pageProps: pageProps};
   }
 
-  const store = createStore(reducer);
+  render() {
+    const {Component, pageProps } = this.props;
 
-  return (
-    <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
-  )
+    return (
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
+    )
+  }
 }
 
-export default MyApp
+const makeStore = () => store;
+export default withRedux(makeStore)(App);

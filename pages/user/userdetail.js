@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { connect } from "react-redux";
 
 const useStyles = makeStyles({
     table: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
 const userDetails = (props) => {
     const { user } = props;
     const classes = useStyles();
-
+    console.log("user props ====>", props);
     return (
         <div>
             <div>{props.title}</div>
@@ -64,6 +65,16 @@ const userDetails = (props) => {
     )
 }
 
+function mapStateToProps(state) {
+    return {
+        login: state.login,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {}
+}
+
 export const getServerSideProps = async (ctx) => {
 
     const userUrl = "https://jsonplaceholder.typicode.com/users/" + ctx.query.userId;
@@ -77,4 +88,4 @@ export const getServerSideProps = async (ctx) => {
     };
 }
 
-export default userDetails;
+export default connect(mapStateToProps, mapDispatchToProps)(userDetails);
