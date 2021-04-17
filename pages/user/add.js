@@ -65,7 +65,7 @@ class Add extends Component {
                             name="body"
                             onChange={this.handleChange} />
                     </div>
-                    <button type="submit" disabled={this.state.loading}>Submit</button>
+                    <button type="submit" disabled={(this.state.loading || !this.props?.login)}>Submit</button>
                 </form>
                 
                 { this.state.dataPosted ? (
@@ -78,6 +78,12 @@ class Add extends Component {
                     <Spinner animation="border" role="status">
                         <span className="sr-only">Loading...</span>
                     </Spinner> ) : null }
+
+                { this.props?.login ? null : (
+                    <Alert variant="danger">
+                        Login first!
+                    </Alert>
+                ) }
                 
             </div>
         )

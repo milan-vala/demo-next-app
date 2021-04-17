@@ -7,7 +7,10 @@ class Login extends React.Component {
         console.log("===>", this.props)
         return (
             <div>
+                { this.props?.login ? (<h3>Logged in!</h3>) : (<h3>Not Logged in!</h3>) }
+
                 <button onClick={this.props.handleLogin}>Login</button>
+                <button onClick={this.props.handleLogout}>Logout</button>
             </div>
         )
     }
@@ -19,10 +22,9 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        handleLogin: () => dispatch({ type: "USER_LOGIN" }),
-    }
+const mapDispatchToProps = {
+    handleLogin: actions.userLogin,
+    handleLogout: actions.userLogout
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login) ;
