@@ -33,11 +33,11 @@ export default function Nav() {
                 
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link href="/user/add">
-                            <a className="nav-item nav-link">Add User <span className="sr-only">(current)</span></a>
-                        </Link>
                         <Link href="/user">
                             <a className="nav-item nav-link">Users</a>
+                        </Link>
+                        <Link href="/user/add">
+                            <a className="nav-item nav-link">Add User <span className="sr-only">(current)</span></a>
                         </Link>
                         <Link href="/user/login">
                             <a className="nav-item nav-link">Login</a>

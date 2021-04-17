@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import UserDetails from "./userdetail";
+import { connect } from "react-redux";
 
 const Users = (props) => {
-
+    console.log("props in index ===>", props);
     return (
         <div>
             <ul>
@@ -24,6 +25,16 @@ const Users = (props) => {
     )
 }
 
+function mapStateToProps(state) {
+    return {
+        login: state.login,
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return {}
+}
+
 export const getServerSideProps = async (ctx) => {
     const usersUrl = "https://jsonplaceholder.typicode.com/users";
     const userResponse = await fetch(usersUrl);
@@ -36,4 +47,4 @@ export const getServerSideProps = async (ctx) => {
     };
 }
 
-export default Users;
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
